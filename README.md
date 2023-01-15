@@ -1,1 +1,1 @@
-A simple TODO application made with vue-cli.
+A simple TODO application made with vue, vuex.
