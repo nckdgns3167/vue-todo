@@ -6,7 +6,7 @@
     </span>
 
     <Modal v-if="showModal" @close="showModal = false">
-      <h3 slot="header" style="color: orange;">WARNING !!!</h3>
+      <h3 slot="header" style="color: orange">WARNING !!!</h3>
       <p slot="body">No spaces allowed.</p>
       <span slot="footer">🤞💕</span>
     </Modal>
@@ -20,14 +20,15 @@ export default {
   data: () => {
     return {
       newTodoItem: "",
-      showModal: false
+      showModal: false,
     };
   },
   methods: {
     addTodo() {
       const todo = this.newTodoItem.trim();
       if (todo) {
-        this.$emit("addTodo", todo);
+        // this.$emit("addTodo", todo);
+        this.$store.commit("addTodo", todo);
         this.clearInput();
       } else {
         this.showModal = !this.showModal;
