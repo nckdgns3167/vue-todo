@@ -20,14 +20,10 @@ export default {
   methods: {
     removeTodo(todo, index) {
       // this.$emit("removeTodo", todo, index);
-      console.log(todo);
-      console.log(index);
       this.$store.commit("removeTodo", { todo, index });
     },
     toggleComplete(todo, index) {
       // this.$emit("toggleComplete", todo, index);
-      console.log(todo);
-      console.log(index);
       this.$store.commit("toggleComplete", { todo, index });
     },
   },
