@@ -2,31 +2,37 @@
   <div>
     <transition-group name="list" tag="ul">
       <!-- 구조분해할당 문법 적용 -->
-      <li v-for="({ completed, todo }, index) in this.$store.state.todos" v-bind:key="index" class="shadow">
+      <li v-for="({ completed, todo }, index) in this.getTodos" v-bind:key="index" class="shadow">
         <i
           class="fa-solid fa-check checkBtn"
           v-bind:class="{ checkBtnCompleted: completed }"
-          v-on:click="toggleComplete(todo, index)"
+          v-on:click="toggleComplete({todo, index})"
         ></i>
         <span v-bind:class="{ textCompleted: completed }">{{ todo }}</span>
-        <i class="fa-solid fa-trash-can removeBtn" v-on:click="removeTodo(todo, index)"></i>
+        <i class="fa-solid fa-trash-can removeBtn" v-on:click="removeTodo({todo, index})"></i>
       </li>
     </transition-group>
   </div>
 </template>
 
 <script>
+import {mapGetters, mapMutations} from "vuex";
+
 export default {
   methods: {
-    removeTodo(todo, index) {
-      // this.$emit("removeTodo", todo, index);
-      this.$store.commit("removeTodo", { todo, index });
-    },
-    toggleComplete(todo, index) {
-      // this.$emit("toggleComplete", todo, index);
-      this.$store.commit("toggleComplete", { todo, index });
-    },
+    ...mapMutations(["removeTodo", "toggleComplete"]), // payload는 암묵적으로 보내짐.
+    // removeTodo(todo, index) {
+    //   // this.$emit("removeTodo", todo, index);
+    //   this.$store.commit("removeTodo", { todo, index });
+    // },
+    // toggleComplete(todo, index) {
+    //   // this.$emit("toggleComplete", todo, index);
+    //   this.$store.commit("toggleComplete", { todo, index });
+    // }
   },
+  computed: {
+    ...mapGetters(["getTodos"])
+  }
 };
 </script>
 
