@@ -1,1 +1,1 @@
-A simple TODO application made with vue, vuex.
+A simple TODO application made with **Vue, Vuex**.
