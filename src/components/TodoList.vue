@@ -2,7 +2,7 @@
   <div>
     <transition-group name="list" tag="ul">
       <!-- 구조분해할당 문법 적용 -->
-      <li v-for="({ completed, todo }, index) in this.getTodos" v-bind:key="index" class="shadow">
+      <li v-for="({ completed, todo }, index) in this.getTodos" v-bind:key="todo" class="shadow">
         <i
           class="fa-solid fa-check checkBtn"
           v-bind:class="{ checkBtnCompleted: completed }"
