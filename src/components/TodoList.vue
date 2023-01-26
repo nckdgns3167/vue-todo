@@ -6,17 +6,17 @@
         <i
           class="fa-solid fa-check checkBtn"
           v-bind:class="{ checkBtnCompleted: completed }"
-          v-on:click="toggleComplete({todo, index})"
+          v-on:click="toggleComplete({ todo, index })"
         ></i>
         <span v-bind:class="{ textCompleted: completed }">{{ todo }}</span>
-        <i class="fa-solid fa-trash-can removeBtn" v-on:click="removeTodo({todo, index})"></i>
+        <i class="fa-solid fa-trash-can removeBtn" v-on:click="removeTodo({ todo, index })"></i>
       </li>
     </transition-group>
   </div>
 </template>
 
 <script>
-import {mapGetters, mapMutations} from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
@@ -31,8 +31,8 @@ export default {
     // }
   },
   computed: {
-    ...mapGetters(["getTodos"])
-  }
+    ...mapGetters(["getTodos"]),
+  },
 };
 </script>
 
